@@ -1,8 +1,8 @@
 import { JsonRpcSigner } from "@ethersproject/providers";
-import { createContext } from "react";
-import { signer, network } from "../types";
+import { ComponentProps, createContext, useState, useContext } from "react";
+import { signer, network, FunctionComponentWithChildren } from "../types";
 
-export const AccountContext = createContext<{
+const AccountContext = createContext<{
   signer: signer;
   setSigner: (signer: JsonRpcSigner) => void;
   network: network;
@@ -13,3 +13,25 @@ export const AccountContext = createContext<{
   network: null,
   setNetwork: () => null,
 });
+
+// eslint-disable-next-line react-refresh/only-export-components
+export const useAccountContext = () => useContext(AccountContext);
+export const AccountContextProvider = ({
+  children,
+}: ComponentProps<FunctionComponentWithChildren>): JSX.Element => {
+  const [signer, setSigner] = useState<signer>(null);
+  const [network, setNetwork] = useState<network>(null);
+
+  return (
+    <AccountContext.Provider
+      value={{
+        signer,
+        setSigner,
+        network,
+        setNetwork,
+      }}
+    >
+      {children}
+    </AccountContext.Provider>
+  );
+};

@@ -1,19 +1,19 @@
-import { useContext } from "react";
 import { wrapDocument } from "@govtechsg/open-attestation";
-import { AppContext } from "../contexts/AppContext";
-import { AccountContext } from "../contexts/AccountContext";
+import { useAccountContext } from "../contexts/AccountContext";
+import { useDocumentStoreContext } from "../contexts/DocumentStoreContext";
+import { useDnsContext } from "../contexts/DnsContext";
+import { useStatusContext } from "../contexts/StatusContext";
+import { useStepContext } from "../contexts/StepContext";
+import { useWrappedDocumentContext } from "../contexts/WrappedDocumentContext";
 import { issueDocument } from "../services/document-store";
 
 export const DocumentForm = () => {
-  const {
-    dns,
-    documentStoreAddress,
-    status,
-    setStatus,
-    setCurrentStep,
-    setWrappedDocument,
-  } = useContext(AppContext);
-  const { signer } = useContext(AccountContext);
+  const { documentStoreAddress } = useDocumentStoreContext();
+  const { dns } = useDnsContext();
+  const { status, setStatus } = useStatusContext();
+  const { setCurrentStep } = useStepContext();
+  const { setWrappedDocument } = useWrappedDocumentContext();
+  const { signer } = useAccountContext();
 
   const documentBase = {
     $template: {

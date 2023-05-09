@@ -1,5 +1,4 @@
-import { useContext } from "react";
-import { AppContext } from "../contexts/AppContext";
+import { useStatusContext } from "../contexts/StatusContext";
 
 export const Button = ({
   buttonText,
@@ -8,7 +7,7 @@ export const Button = ({
   buttonText: string;
   onHandler: () => void;
 }) => {
-  const { status } = useContext(AppContext);
+  const { status } = useStatusContext();
 
   return (
     <button

@@ -2,9 +2,9 @@ import { ComponentProps } from "react";
 import { FunctionComponentWithChildren } from "./types";
 
 export const combineContextProviders = (
-  components: FunctionComponentWithChildren[],
+  contextProviders: FunctionComponentWithChildren[],
 ) => {
-  return components.reduce(
+  return contextProviders.reduce(
     (AccumulatedContextProvider, CurrentContextProvider) => {
       return ({ children }) => {
         return (

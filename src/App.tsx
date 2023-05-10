@@ -5,10 +5,8 @@ import { StatusProvider } from "./contexts/StatusContext";
 import { StepProvider } from "./contexts/StepContext";
 import { WrappedDocumentProvider } from "./contexts/WrappedDocumentContext";
 import { Steps } from "./components/Steps";
-// import reactLogo from "./assets/react.svg";
-// import viteLogo from "/vite.svg";
-import "./App.css";
 import { combineContextProviders } from "./utils";
+import "./App.css";
 
 const App = () => {
   const providers = [

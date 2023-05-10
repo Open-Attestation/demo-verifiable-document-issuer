@@ -1,6 +1,9 @@
+import { FunctionComponent, PropsWithChildren } from "react";
 import { JsonRpcSigner, Network } from "@ethersproject/providers";
 import { WrappedDocument } from "@govtechsg/open-attestation/dist/types/2.0/types";
 
+export type FunctionComponentWithChildren =
+  FunctionComponent<PropsWithChildren>;
 export type status = "pending" | "error" | "initial";
 export type step = "connect" | "deploy" | "dns" | "document" | "download";
 export type signer = null | JsonRpcSigner;

@@ -1,7 +1,9 @@
-import { useContext } from "react";
 import { saveAs } from "file-saver";
-import { AccountContext } from "../contexts/AccountContext";
-import { AppContext } from "../contexts/AppContext";
+import { useAccountContext } from "../contexts/AccountContext";
+import { useDocumentStoreContext } from "../contexts/DocumentStoreContext";
+import { useStatusContext } from "../contexts/StatusContext";
+import { useStepContext } from "../contexts/StepContext";
+import { useWrappedDocumentContext } from "../contexts/WrappedDocumentContext";
 import { step } from "../types";
 import { getAccount } from "../services/account";
 import { deployDocumentStore } from "../services/document-store";
@@ -29,14 +31,11 @@ const Step = ({
 };
 
 export const Steps = () => {
-  const { signer, setSigner, setNetwork } = useContext(AccountContext);
-  const {
-    setDocumentStoreAddress,
-    setStatus,
-    currentStep,
-    setCurrentStep,
-    wrappedDocument,
-  } = useContext(AppContext);
+  const { signer, setSigner, setNetwork } = useAccountContext();
+  const { setDocumentStoreAddress } = useDocumentStoreContext();
+  const { setStatus } = useStatusContext();
+  const { currentStep, setCurrentStep } = useStepContext();
+  const { wrappedDocument } = useWrappedDocumentContext();
 
   const onConnect = async () => {
     try {

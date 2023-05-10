@@ -1,13 +1,15 @@
-import { useContext } from "react";
-import { AppContext } from "../contexts/AppContext";
-import { AccountContext } from "../contexts/AccountContext";
+import { useAccountContext } from "../contexts/AccountContext";
+import { useDocumentStoreContext } from "../contexts/DocumentStoreContext";
+import { useDnsContext } from "../contexts/DnsContext";
+import { useStepContext } from "../contexts/StepContext";
 import { Button } from "../components/Button";
 import { dns } from "../types";
 
 export const Dns = () => {
-  const { documentStoreAddress, setDns, setCurrentStep } =
-    useContext(AppContext);
-  const { network } = useContext(AccountContext);
+  const { documentStoreAddress } = useDocumentStoreContext();
+  const { setDns } = useDnsContext();
+  const { setCurrentStep } = useStepContext();
+  const { network } = useAccountContext();
 
   const onConfirm = () => {
     setCurrentStep("document");

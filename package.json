@@ -13,7 +13,7 @@
   "dependencies": {
     "@govtechsg/document-store": "^2.6.1",
     "@govtechsg/open-attestation": "^6.6.0",
-    "ethers": "^5.7.2",
+    "ethers": "^6.0.0",
     "file-saver": "^2.0.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
